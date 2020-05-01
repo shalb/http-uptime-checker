@@ -1,0 +1,7 @@
+version: '2'
+services:
+  http-uptime-checker:
+    build:
+      context: ./
+    image: shalb/http-uptime-checker:0.0.1
+

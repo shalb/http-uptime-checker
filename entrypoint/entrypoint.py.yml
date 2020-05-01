@@ -1,0 +1,10 @@
+---
+tasks:
+  - 'uptime'
+target_url: 'https://example.com'
+target_url_check_interval: 6
+fails_to_downtime: 5
+log_level: 'INFO'
+check_interval: 10
+listen_port: 8000
+name: 'http_uptime_checker'
