@@ -9,6 +9,7 @@ import time
 import logging
 import yaml
 import os
+import datetime
 import prometheus_client
 import prometheus_client.core
 
@@ -79,6 +80,7 @@ def get_data_uptime():
     except:
         responce = False
         data_tmp['target_url_load_time'] = False
+    daily_metrics_reset()
     parse_data_uptime(responce)
 
 def parse_data_uptime(responce):
@@ -120,6 +122,15 @@ def parse_data_uptime(responce):
         value = data_tmp['target_url_load_time']
         metric = {'metric_name': metric_name, 'labels': labels, 'description': description, 'value': value}
         data.append(metric)
+
+def daily_metrics_reset():
+    now = datetime.datetime.utcnow().date()
+    if 'last_reset' not in data_tmp:
+        data_tmp['last_reset'] = now
+    if now > data_tmp['last_reset']:
+        data_tmp['number_of_checks'] = 0
+        data_tmp['number_of_downtimes'] = 0
+        data_tmp['last_reset'] = now
 
 def label_clean(label):
     replace_map = {

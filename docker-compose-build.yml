@@ -3,5 +3,5 @@ services:
   http-uptime-checker:
     build:
       context: ./
-    image: shalb/http-uptime-checker:0.0.1
+    image: shalb/http-uptime-checker:0.0.2
 

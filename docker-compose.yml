@@ -1,7 +1,7 @@
 version: '2'
 services:
   http-uptime-checker:
-    image: shalb/http-uptime-checker:0.0.1
+    image: shalb/http-uptime-checker:0.0.2
    #volumes:
    #  - ./entrypoint:/opt/entrypoint
     restart: always
